@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prefix Game</title>
+  </head>
+  <body>
+
+    <h1>Prefix Game</h1>
+
+    <!-- Guess counter -->
+    <p>
+      <span id="words-guessed">0</span>
+      out of
+      <span id="words-total">0</span>
+      words guessed
+    </p>
+
+    <p>
+      Current prefix: <span id="prefix-field"></span>
+    </p>
+
+    <!-- List of guesses -->
+    <ul id="guessed"><!-- Empty --></ul>
+
+    <!-- Guess entry -->
+    <form id="guess-form" >
+      <label for="guess">Guess:</label>
+      <input type="text" id="guess" name="guess">
+    </form>
+
+    <!-- Control buttons -->
+    <div>
+      <button id="show-hint">Give me a hint</button>
+    </div>
+    <div>
+      <button id="show-remaining-words">Show remaining words</button>
+    </div>
+    <div>
+      <button id="new-prefix">Start with new prefix</button>
+    </div>
+
+    <!-- Main driver logic -->
+    <script type="module" src="main.js"></script>
+
+  </body>
+</html>
