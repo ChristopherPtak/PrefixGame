@@ -51,7 +51,8 @@ function htmlAppendToList(list, item, isItalic) {
  * WebSocket connection
  */
 
-const socket = new WebSocket('ws://' + location.host + '/ws');
+const socketPath = location.pathname + '/ws' + location.search;
+const socket = new WebSocket('ws://' + location.host + socketPath);
 
 socket.onmessage = (message) => {
   const data = JSON.parse(message.data);
