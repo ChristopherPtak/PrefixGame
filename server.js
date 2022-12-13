@@ -200,5 +200,8 @@ app.ws('/ws', (ws, req) => {
   });
 });
 
-app.listen(PORT);
+const server = app.listen(PORT);
+
+// Handle SIGTERM gracefully
+process.on('SIGTERM', () => server.close());
 
