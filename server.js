@@ -13,9 +13,12 @@ const ExpressWS = require('express-ws');
 
 const GameData = JSON.parse(fs.readFileSync('data/prefixes.json'));
 
+function getRandomElement(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
 function getRandomPrefix() {
-  const keys = Object.keys(GameData);
-  return keys[Math.floor(Math.random() * keys.length)];
+  return getRandomElement(Object.keys(GameData));
 }
 
 
@@ -102,6 +105,8 @@ class Game {
       return longest;
     }
 
+    let hints = [];
+
     for (const word of unguessed) {
       const sharedPrefix = longestSharedPrefix(word);
       if (sharedPrefix + 2 >= word.length) {
@@ -113,10 +118,14 @@ class Game {
         continue;
       }
 
-      return hint;
+      hints.push(hint);
     }
 
-    return null;
+    if (hints.length === 0) {
+      return null;
+    } else {
+      return getRandomElement(hints);
+    }
   }
 
   finish() {
