@@ -1,13 +1,22 @@
 
-FROM node:19.2.0-alpine
+FROM alpine:3.16 AS build
 
-COPY data /app/data
-COPY static /app/static
+RUN apk add make
+
+WORKDIR /build
+COPY Makefile /build/Makefile
+COPY src /build/src
+RUN make BUILD=/app 
+
+
+FROM node:19.2.0-alpine3.16
+
+COPY --from=build /app /app
 COPY package.json /app/package.json
-COPY server.js /app/server.js
+COPY package-lock.json /app/package-lock.json
 
 WORKDIR /app
-RUN npm install
+RUN npm ci
 
 CMD node /app/server.js
 

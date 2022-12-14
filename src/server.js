@@ -11,7 +11,7 @@ const ExpressWS = require('express-ws');
  * Set up game logic
  */
 
-const GameData = JSON.parse(fs.readFileSync('data/prefixes.json'));
+const GameData = JSON.parse(fs.readFileSync('static/prefixes.json'));
 
 function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
