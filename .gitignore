@@ -1,2 +1,8 @@
+
+# Large files
 data/dictionary.*.json
+
+# Build artifacts
 node_modules
+build
+
