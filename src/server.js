@@ -180,7 +180,7 @@ app.ws('/ws', (ws, req) => {
     if (data.showHint !== undefined) {
       const hint = game.getHint();
       if (hint !== null) {
-        sendToAllClients({hint: game.getHint()});
+        sendToClient({hint: game.getHint()});
       }
     }
 
