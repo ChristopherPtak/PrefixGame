@@ -19,16 +19,16 @@ $(BUILD):
 $(BUILD)/static: $(BUILD)
 	mkdir $(BUILD)/static
 
-$(BUILD)/static/index.html: $(BUILD)/static src/static/index.html
+$(BUILD)/static/index.html: src/static/index.html | $(BUILD)/static
 	cp src/static/index.html $(BUILD)/static/index.html
 
-$(BUILD)/static/main.js: $(BUILD)/static src/static/main.js
+$(BUILD)/static/main.js: src/static/main.js | $(BUILD)/static
 	cp src/static/main.js $(BUILD)/static/main.js
 
 # TODO Add prefixes.json build rule using generate_prefixes.py
-$(BUILD)/static/prefixes.json: $(BUILD)/static src/static/prefixes.json
+$(BUILD)/static/prefixes.json: src/static/prefixes.json | $(BUILD)/static
 	cp src/static/prefixes.json $(BUILD)/static/prefixes.json
 
-$(BUILD)/server.js: $(BUILD) src/server.js
+$(BUILD)/server.js: src/server.js | $(BUILD)
 	cp src/server.js $(BUILD)/server.js
 
